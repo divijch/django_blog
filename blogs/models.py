@@ -32,3 +32,16 @@ class Blog(models.Model):
     
     def __str__ (self):
         return self.title
+    
+class About(models.Model):
+    about_Heading = models.CharField(max_length=50)
+    about_description = models.TextField(max_length=500)
+    
+    def __str__ (self):
+        return self.about_Heading
+    
+class Social(models.Model):
+    social_title = models.CharField(max_length=50)
+    social_link = models.URLField(max_length=500)
+    def __str__ (self):
+        return self.social_title

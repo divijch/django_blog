@@ -23,6 +23,51 @@
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{single_blog.short_description}}</p>
                     <p class="fs-5 mb-4">{{single_blog.blog_body}}</p>
+
+                    <!-- Comments -->
+                     <h4 class="text-info" style="font-family: Arial !important; font-weight: bold !important;">Comments ({{comment_count}})</h4>
+                     {%if comments%}
+                     <!-- show comments -->
+                      {% for comment in comments %}
+                        <div class="card ml-3 mt-3">
+                            <div class="card-body ">
+                                <p class="card-text mb-0">{{ comment }}</p>
+                                <span>
+                                    <small>{{ comment.user }}</small>
+                                    <small>| {{ comment.created_at|timesince }} ago </small>
+                                </span>
+                            </div>
+                        </div>
+                      {% endfor %}
+                      {%else%}
+                      <h4 class="text-info" style="font-family: Arial !important;">No Comments Yet</h4>
+                      {%endif%}
+                        <br/>
+                        <div class="container mt-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if user.is_authenticated %}
+                                    <h5 class="card-title">Leave a Comment</h5>
+                                    <form action="" method="POST">
+                                        {%csrf_token%}
+                                        <div class="form-group">
+                                            <label for="comment">Your Comment</label>
+                                            <textarea name="comment" class="form-control" rows="3" placeholder="Enter your comment here..."></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                    {%else%}
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-info">Please Login To Leave a Comment</h5>
+                                            <a href="{% url 'login' %}" class="btn btn-info">Login</a>
+                                        </div>
+                                    </div>
+                                    {%endif%}
+                                </div>
+                            </div>
+                        </div>
+
                     </section>
             </article>
         </div>

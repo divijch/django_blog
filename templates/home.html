@@ -49,14 +49,14 @@
       <!-- /.blog-main -->
 
       <aside class="col-md-4 blog-sidebar">
-        <div class="p-3 mb-3 bg-light rounded">
+        <div class="p-3 mb-3 rounded">
           {%for abt in about%}
           <h4 class="font-italic">{{abt.about_Heading}}</h4>
           <p class="mb-0">{{abt.about_description}}</p>
           {%endfor%}
         </div>
 
-        <div class="p-3">
+        <div class="p-3 follow rounded">
           <h4 class="font-italic">Follow Us</h4>
           <ol class="list-unstyled">
             {% for i in social %}

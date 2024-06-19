@@ -42,8 +42,10 @@
             <a class="btn btn-sm btn-info" href="{%url 'login'%}">Login</a> &nbsp;
             <a class="btn btn-sm btn-outline-secondary" href="{%url 'register'%}">Register</a>
             {%else%}
+            {% if user.is_staff %}
             <a class="btn btn-sm btn-info"href="{% url 'dashboard' %}">Dashboard</a>
             &emsp;
+            {%endif%}
             <a class="btn btn-sm btn-info" href="{% url 'logout'%}">Logout</a> 
 
             {%endif%}

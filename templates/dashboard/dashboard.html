@@ -3,13 +3,13 @@
 {% block content %}
 
 <div class="row">
+    {% if user.is_staff %}
     <!-- LOAD SIDE BAR HERE -->
      {% include 'dashboard/sidebar.html'%}
 
     <!-- Right Side Content -->
     <div class="col-md-9">
         <span>Logged in as <b>{{user}}</b></span>
-        {% if user.is_staff %}
         <div class="row">
             <!-- First Card -->
             <div class="col">
